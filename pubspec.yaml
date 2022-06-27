@@ -1,0 +1,29 @@
+name: apotek
+version: 1.0.0+1
+publish_to: none
+description: A new Flutter project.
+environment:
+  sdk: '>=2.17.1 <3.0.0'
+
+dependencies:
+  cupertino_icons: ^1.0.2
+  fast_barcode_scanner: ^1.1.4
+  flutter:
+    sdk: flutter
+  flutter_barcode_scanner: ^2.0.0
+  flutter_beep: ^1.0.0
+  get: 4.6.5
+  get_storage: ^2.0.3
+  http: ^0.13.4
+  image_picker: ^0.8.5+3
+  intl: ^0.17.0
+  mobile_scanner: ^2.0.0
+  wakelock: ^0.6.1+2
+
+dev_dependencies:
+  flutter_lints: ^2.0.0
+  flutter_test:
+    sdk: flutter
+
+flutter:
+  uses-material-design: true
