@@ -1,7 +1,6 @@
 import 'package:apotek/app/modules/home/controllers/home_controller.dart';
 import 'package:apotek/app/modules/login/controllers/login_controller.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_beep/flutter_beep.dart';
 
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
@@ -10,6 +9,7 @@ import 'package:mobile_scanner/mobile_scanner.dart';
 class AmbilobatView extends GetView {
   HomeController homeCtrl = Get.put(HomeController());
   LoginController loginCtrl = Get.put(LoginController());
+
   @override
   MobileScannerController controllerMSC = MobileScannerController(
     torchEnabled: false,

@@ -26,6 +26,9 @@ class LoginController extends GetxController {
   var isLoading = false.obs;
 
   var isAuth = false.obs;
+
+  var isFront = false.obs;
+
   void dialogError(String msg) {
     Get.defaultDialog(
       title: "Terjadi Kesalahan",
@@ -137,9 +140,11 @@ class LoginController extends GetxController {
           //berhasil
           print(response.body);
           FlutterBeep.beep(false);
+          // FlutterBeep.playSysSound(41);
           homeC.barcode?.value = "";
         } else {
           snackbarError("Error Connection");
+          FlutterBeep.beep();
         }
         isLoading.value = false;
       } catch (e) {

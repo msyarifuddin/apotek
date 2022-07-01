@@ -14,7 +14,7 @@ class HomeView extends GetView<HomeController> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('HomeView'),
+        title: Text('Aplikasi Display Obat'),
         centerTitle: true,
         actions: [
           IconButton(
@@ -33,10 +33,10 @@ class HomeView extends GetView<HomeController> {
               children: [
                 Text(
                   'Scan Barcode',
-                  style: TextStyle(fontSize: 20),
+                  style: TextStyle(fontSize: 36),
                 ),
                 SizedBox(
-                  height: 20,
+                  height: 40,
                 ),
                 // ElevatedButton(
                 //   onPressed: () {
@@ -54,6 +54,12 @@ class HomeView extends GetView<HomeController> {
                     Get.toNamed(Routes.AMBILOBAT);
                   },
                   child: Text("Verifikasi Obat"),
+                  style: ElevatedButton.styleFrom(
+                      fixedSize: Size(200, 60),
+                      textStyle: const TextStyle(
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                      )),
                 ),
                 SizedBox(
                   height: 20,
@@ -64,6 +70,12 @@ class HomeView extends GetView<HomeController> {
                     Get.toNamed(Routes.AMBILOBAT);
                   },
                   child: Text("Penyerahan Obat"),
+                  style: ElevatedButton.styleFrom(
+                      fixedSize: Size(200, 60),
+                      textStyle: const TextStyle(
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                      )),
                 ),
               ],
             ),
