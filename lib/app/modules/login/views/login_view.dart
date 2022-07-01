@@ -14,11 +14,14 @@ class LoginView extends GetView<LoginController> {
       ),
       body: Center(
         child: Padding(
-          padding: const EdgeInsets.all(20.0),
+          padding: const EdgeInsets.all(30.0),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               TextField(
+                style: TextStyle(
+                  fontSize: 20,
+                ),
                 controller: controller.usernameC,
                 autocorrect: false,
                 decoration: InputDecoration(
@@ -30,6 +33,9 @@ class LoginView extends GetView<LoginController> {
                 height: 20,
               ),
               Obx(() => TextField(
+                    style: TextStyle(
+                      fontSize: 20,
+                    ),
                     controller: controller.passwordC,
                     obscureText: controller.isHidden.value,
                     decoration: InputDecoration(
@@ -48,13 +54,24 @@ class LoginView extends GetView<LoginController> {
               SizedBox(
                 height: 20,
               ),
-              ElevatedButton(
-                onPressed: () {
-                  controller.login(
-                      controller.usernameC.text, controller.passwordC.text);
-                },
-                child: Text("LOGIN"),
-              )
+              Obx(() => ElevatedButton(
+                    onPressed: () {
+                      if (controller.isLoading.isFalse) {
+                        controller.login(controller.usernameC.text,
+                            controller.passwordC.text);
+                      }
+                    },
+                    child: Text(controller.isLoading.isFalse
+                        ? "LOGIN"
+                        : "Mohon Tunggu"),
+                    style: ElevatedButton.styleFrom(
+                      fixedSize: Size(200, 60),
+                      textStyle: const TextStyle(
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ))
             ],
           ),
         ),

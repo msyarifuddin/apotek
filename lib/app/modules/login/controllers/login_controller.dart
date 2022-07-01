@@ -82,6 +82,7 @@ class LoginController extends GetxController {
   void onClose() {}
 
   void login(String username, String password) async {
+    isLoading.value = true;
     if (username != '' && password != '') {
       var response = await http.post(
         Uri.parse(url + 'otentikasi'),
@@ -109,6 +110,7 @@ class LoginController extends GetxController {
     } else {
       dialogError("Semua data harus diisi");
     }
+    isLoading.value = false;
   }
 
   void logout() {
@@ -141,7 +143,10 @@ class LoginController extends GetxController {
           print(response.body);
           FlutterBeep.beep(false);
           // FlutterBeep.playSysSound(41);
-          homeC.barcode?.value = "";
+          // homeC.barcode?.value = "";
+          // String? nomor = homeC.barcode?.value;
+          // homeC.barcode?.value = (nomor! + " berhasil dipindai");
+          homeC.barcode?.value = " berhasil dipindai";
         } else {
           snackbarError("Error Connection");
           FlutterBeep.beep();

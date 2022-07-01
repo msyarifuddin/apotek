@@ -24,24 +24,29 @@ class AmbilobatView extends GetView {
         builder: (context) {
           return Stack(
             children: [
-              MobileScanner(
-                controller: controllerMSC,
-                fit: BoxFit.contain,
-                // allowDuplicates: true,
-                // controller: MobileScannerController(
-                //   torchEnabled: true,
-                //   facing: CameraFacing.front,
-                // ),
-                onDetect: (xbarcode, args) {
-                  // setState(() {
-                  homeCtrl.barcode?.value = xbarcode.rawValue!;
-                  // final splitx = homeCtrl.barcode?.value.split("#");
-                  // print(splitx![0]);
-                  loginCtrl.updateDisplay(
-                      loginCtrl.urlUpdate.value, xbarcode.rawValue!);
-                  // FlutterBeep.beep(false);
-                  // });
-                },
+              RotatedBox(
+                quarterTurns: 1,
+                child: Center(
+                  child: MobileScanner(
+                    controller: controllerMSC,
+                    fit: BoxFit.fill,
+                    // allowDuplicates: true,
+                    // controller: MobileScannerController(
+                    //   torchEnabled: true,
+                    //   facing: CameraFacing.front,
+                    // ),
+                    onDetect: (xbarcode, args) {
+                      // setState(() {
+                      homeCtrl.barcode?.value = xbarcode.rawValue!;
+                      // final splitx = homeCtrl.barcode?.value.split("#");
+                      // print(splitx![0]);
+                      loginCtrl.updateDisplay(
+                          loginCtrl.urlUpdate.value, xbarcode.rawValue!);
+                      // FlutterBeep.beep(false);
+                      // });
+                    },
+                  ),
+                ),
               ),
               Align(
                 alignment: Alignment.bottomCenter,
