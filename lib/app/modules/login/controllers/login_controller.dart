@@ -158,6 +158,7 @@ class LoginController extends GetxController {
           snackPosition: SnackPosition.BOTTOM,
           backgroundColor: Colors.white,
         );
+        FlutterBeep.beep();
       }
     } else {
       snackbarError("Semua data harus diisi");
