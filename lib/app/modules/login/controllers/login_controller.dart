@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:apotek/app/modules/home/controllers/home_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_beep/flutter_beep.dart';
+import 'package:flutter_tts/flutter_tts.dart';
 import 'package:get/get.dart';
 
 import 'package:http/http.dart' as http;
@@ -28,6 +29,8 @@ class LoginController extends GetxController {
   var isAuth = false.obs;
 
   var isFront = false.obs;
+
+  FlutterTts flutterTts = FlutterTts();
 
   void dialogError(String msg) {
     Get.defaultDialog(
@@ -122,6 +125,18 @@ class LoginController extends GetxController {
     // Get.offAllNamed(Routes.LOGIN);
   }
 
+  Future speakApotek(String teks) async {
+    await flutterTts.setLanguage("id-ID");
+    await flutterTts.setPitch(1);
+    await flutterTts.setVolume(1);
+    print(await flutterTts.getLanguages);
+    print(await flutterTts.getVoices);
+    print(await flutterTts.getEngines);
+    await flutterTts.speak(teks
+        // "Panggilan Bapak Edwin Tri Hadnanto, Poli Bedah Urologi!",
+        );
+  }
+
   void updateDisplay(String urlUpdate, String no_out) async {
     if (urlUpdate != '' && no_out != '') {
       print(urlUpdate);
@@ -147,8 +162,20 @@ class LoginController extends GetxController {
           // String? nomor = homeC.barcode?.value;
           // homeC.barcode?.value = (nomor! + " berhasil dipindai");
           homeC.barcode?.value = " berhasil dipindai";
+          // if (urlUpdate == "UpdateSerahObat") {
+          Map<String, dynamic> dataPasien =
+              json.decode(response.body) as Map<String, dynamic>;
+          speakApotek("Panggilan " +
+              dataPasien['datapasien']['cast'].toString() +
+              " " +
+              dataPasien['datapasien']['nmpasien'].toString() +
+              " dari poli " +
+              dataPasien['datapasien']['nama_unit'].toString());
+          // }
         } else {
           snackbarError("Error Connection");
+          print(response.statusCode);
+          print(response.body);
           FlutterBeep.beep();
         }
         isLoading.value = false;

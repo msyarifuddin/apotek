@@ -77,6 +77,21 @@ class HomeView extends GetView<HomeController> {
                         fontWeight: FontWeight.bold,
                       )),
                 ),
+                SizedBox(
+                  height: 20,
+                ),
+                ElevatedButton(
+                  onPressed: () {
+                    loginC.speakApotek("Testing");
+                  },
+                  child: Text("Tes Panggilan"),
+                  style: ElevatedButton.styleFrom(
+                      fixedSize: Size(200, 60),
+                      textStyle: const TextStyle(
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                      )),
+                ),
               ],
             ),
           ),

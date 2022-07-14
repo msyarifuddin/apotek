@@ -14,7 +14,7 @@ class AmbilobatView extends GetView {
   MobileScannerController controllerMSC = MobileScannerController(
     torchEnabled: false,
     // formats: [BarcodeFormat.qrCode]
-    facing: CameraFacing.front,
+    // facing: CameraFacing.front,
   );
 
   Widget build(BuildContext context) {
@@ -24,29 +24,30 @@ class AmbilobatView extends GetView {
         builder: (context) {
           return Stack(
             children: [
-              RotatedBox(
-                quarterTurns: 1,
-                child: Center(
-                  child: MobileScanner(
-                    controller: controllerMSC,
-                    fit: BoxFit.fill,
-                    // allowDuplicates: true,
-                    // controller: MobileScannerController(
-                    //   torchEnabled: true,
-                    //   facing: CameraFacing.front,
-                    // ),
-                    onDetect: (xbarcode, args) {
-                      // setState(() {
-                      homeCtrl.barcode?.value = xbarcode.rawValue!;
-                      // final splitx = homeCtrl.barcode?.value.split("#");
-                      // print(splitx![0]);
-                      loginCtrl.updateDisplay(
-                          loginCtrl.urlUpdate.value, xbarcode.rawValue!);
-                      // FlutterBeep.beep(false);
-                      // });
-                    },
-                  ),
+              // RotatedBox(
+              // quarterTurns: 1,
+              // child:
+              Center(
+                child: MobileScanner(
+                  controller: controllerMSC,
+                  fit: BoxFit.fill,
+                  // allowDuplicates: true,
+                  // controller: MobileScannerController(
+                  //   torchEnabled: true,
+                  //   facing: CameraFacing.front,
+                  // ),
+                  onDetect: (xbarcode, args) {
+                    // setState(() {
+                    homeCtrl.barcode?.value = xbarcode.rawValue!;
+                    // final splitx = homeCtrl.barcode?.value.split("#");
+                    // print(splitx![0]);
+                    loginCtrl.updateDisplay(
+                        loginCtrl.urlUpdate.value, xbarcode.rawValue!);
+                    // FlutterBeep.beep(false);
+                    // });
+                  },
                 ),
+                // ),
               ),
               Align(
                 alignment: Alignment.bottomCenter,
@@ -129,7 +130,8 @@ class AmbilobatView extends GetView {
                               ),
                             ),
                           )),
-                      Row(
+                      Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           IconButton(
                             color: Colors.white,
@@ -150,7 +152,10 @@ class AmbilobatView extends GetView {
                             iconSize: 32.0,
                             onPressed: () => controllerMSC.switchCamera(),
                           ),
-                          Text("Camera")
+                          Text(
+                            "Camera",
+                            style: TextStyle(color: Colors.white),
+                          )
                         ],
                       ),
                       // Row(

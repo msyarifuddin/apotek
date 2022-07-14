@@ -14,8 +14,8 @@ void main() async {
   await GetStorage.init();
   WidgetsFlutterBinding.ensureInitialized();
   SystemChrome.setPreferredOrientations([
-    DeviceOrientation.landscapeLeft,
-    DeviceOrientation.landscapeRight,
+    DeviceOrientation.portraitUp,
+    DeviceOrientation.portraitDown,
   ]).then((value) => runApp(MyApp()));
   runApp(
     MyApp(),
